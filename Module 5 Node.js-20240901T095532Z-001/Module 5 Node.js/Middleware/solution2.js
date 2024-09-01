@@ -1,15 +1,9 @@
 import express from "express";
+import morgan from "morgan";
 
 const app = express();
 const port = 3000;
-
-const logger = (req, res, next) => {
-  console.log(`URL: ${req.url}`);
-  console.log(`Method: ${req.method}`);
-  next();
-};
-
-app.use(logger);
+app.use(morgan("combined"));
 
 app.get("/", (req, res) => {
   res.send("Hello");
